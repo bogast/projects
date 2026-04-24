@@ -1,0 +1,29 @@
+CREATE DATABASE product CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE product;
+
+CREATE TABLE categories (
+    id_cat INT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(60)
+);
+
+INSERT INTO categories (category) VALUES 
+('Молочные продукты'),
+('Хлебобулочные изделия'),
+('Кондитерские изделия');
+
+CREATE TABLE tovars (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    id_cat INT,
+    cena FLOAT,
+    kol INT,
+    srok DATE,
+    FOREIGN KEY (id_cat) REFERENCES categories(id_cat)
+);
+
+-- тестовые данные
+INSERT INTO tovars (name, id_cat, cena, kol, srok) VALUES
+('молоко', 1, 50, 40, '2020-08-20'),
+('хлеб', 2, 25, 50, '2020-10-20'),
+('конфеты', 3, 230, 10, '2020-09-20');
